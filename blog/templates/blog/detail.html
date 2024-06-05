@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block content %}
+
+    <section class="section">
+        <div class="columns">
+          <div class="column is-8 is-offset-2">
+            <div class="content is-medium">
+              <h2 class="subtitle is-4">{{ post.created_at }}</h2>
+              <div class="control"><span class="tag is-info is-uppercase ">story</span></div>
+
+              <h1 class="title">{{ post.title }}</h1>
+              <md>{{post.body}}</md>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+{% endblock %}
