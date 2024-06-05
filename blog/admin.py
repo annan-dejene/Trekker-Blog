@@ -18,6 +18,8 @@ class PostAdmin(admin.ModelAdmin):
 
     search_fields = ['title', 'category__title']
 
+    prepopulated_fields = {'slug': ('title',)}
+
     inlines = [CommentInline,]
 
     fieldsets = (
@@ -34,10 +36,16 @@ class PostAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'post', 'created_at')
 
+    list_filter = ('created_at',)
+
+    search_fields = ('name',)
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug')
 
     search_fields = ('title', 'slug')
+
+    prepopulated_fields = {'slug': ('title',)}
 
