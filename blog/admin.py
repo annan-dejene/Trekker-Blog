@@ -11,10 +11,10 @@ class CommentInline(admin.TabularInline):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'slug', 'created_at')
+    list_display = ('title', 'category', 'slug', 'created_at', 'status')
 
 
-    list_filter = ('created_at', 'category')
+    list_filter = ('created_at', 'category', "status")
 
     search_fields = ['title', 'category__title']
 
@@ -27,7 +27,7 @@ class PostAdmin(admin.ModelAdmin):
             'fields': ("title", "slug"),
         }),
         ("Post Details", {
-            'fields': ("intro", "body", "category")
+            'fields': ("intro", "body", "category", "status")
         }),
     )
 

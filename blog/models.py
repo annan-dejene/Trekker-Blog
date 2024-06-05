@@ -14,18 +14,28 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    DRAFT = 'draft'
+    ACTIVE = 'active'
+
+    STATUS_CHOICES = (
+        (ACTIVE, 'Active'),
+        (DRAFT, 'Draft'),
+    )
+
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     intro = models.TextField() # is not going to be the full body of the blog post but a short starter display
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
+
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
     
-    
+
     class Meta:
         ordering = ['-created_at',]
 
