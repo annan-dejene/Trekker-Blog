@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ category.title|title }} {% endblock %}
+
+{% block content %}
+
+    <h1 class="text-xl">Category: {{ category.title }}</h1>
+
+    {% for post in category.posts.all %}
+        <section class="section">
+            <div class="columns">
+            <div class="column is-8 is-offset-2">
+                <div class="content is-medium">
+                    <h2 class="subtitle is-4">{{ post.created_at|timesince }} ago</h2>
+                    <a href="{% url 'blog:detail' post.slug %}">
+                        <h1 class="title">{{ post.title }}</h1>
+                        <p class="has-text-primary-dark">{{ post.intro }}</p>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </section>
+      {% endfor %}
+
+{% endblock %}

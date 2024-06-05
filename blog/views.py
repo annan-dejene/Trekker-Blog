@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Post, Comment
+from .models import Post, Comment, Category
 
 
 def detail(request, slug):
@@ -17,3 +17,9 @@ def detail(request, slug):
         
 
     return render(request, 'blog/detail.html', {"post": post})
+
+
+def category_detail(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+
+    return render(request, 'blog/category.html', {'category': category})
