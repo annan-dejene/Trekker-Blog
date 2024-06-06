@@ -40,10 +40,12 @@
         <div class="navbar-end">
           <div class=" navbar-item">
             <div class="control has-icons-left">
-              <input class="input is-rounded" type="text" placeholder="Search">
-              <span class="icon is-left">
-                <i class="fa fa-search"></i>
-              </span>
+                <form action="{% url 'blog:search' %}" method="get">
+                    <input name="query" class="input is-rounded" value="{% if request.resolver_match.url_name == 'search' %} {{ query }} {% endif %}" type="text" placeholder="Search">
+                    <span class="icon is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </form>
             </div>
           </div>
           <a href="/" class="navbar-item is-size-5 has-text-weight-semibold">
