@@ -21,6 +21,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# for robots.txt
+from core import views
+
 # for sitemap
 from django.contrib.sitemaps.views import sitemap
 
@@ -30,6 +33,7 @@ sitemaps = {'category': CategorySitemap, 'post': PostSitemap}
 
 urlpatterns = [
     path("sitemap.xml", sitemap, {'sitemaps': sitemaps}),
+    path("robots.txt", views.robots_txt, name='robots_txt'),
     path("", include('core.urls')),
     path("", include('blog.urls')),
     path("admin/", admin.site.urls),
