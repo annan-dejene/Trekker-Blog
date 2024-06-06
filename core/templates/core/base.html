@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crash Blog | {% block title %} {% endblock %} </title>    <!-- Bulma Version 1-->
+    <title>Trekker Blog | {% block title %} {% endblock %} </title> 
     <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.0/css/bulma.min.css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.jpg' %}" type="image/x-icon">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
@@ -24,7 +27,7 @@
 
 <body>
 <!-- START NAV -->
-  <nav class="navbar p-3">
+  <nav class="navbar p-3 shadow">
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
@@ -68,7 +71,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            Copyright &copy; 2024 - Crash blog
+            Copyright &copy; 2024 - Trekker Blog
           </p>
         </div>
     </footer>
