@@ -12,6 +12,11 @@
             <div class="column is-8 is-offset-2">
                 <div class="content is-medium">
                     <h2 class="subtitle is-4">{{ post.created_at|timesince }} ago</h2>
+                    {% if post.image %}
+                        <figure class="hero container max-w-screen-lg mx-auto pb-10">
+                            <img class="mx-auto h-auto max-w-lg rounded-lg" src="{{ post.image.url }}" alt="{{ post.title }}-img">
+                        </figure>
+                    {% endif %}
                     <a href="{% url 'blog:detail' post.slug %}">
                         <h1 class="title">{{ post.title }}</h1>
                         <hr class="w-80 mx-auto h-1 my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">

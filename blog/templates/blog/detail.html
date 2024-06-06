@@ -6,25 +6,31 @@
 
     <section class="section">
         <div class="columns">
-          <div class="column is-8 is-offset-2">
-            <div class="content is-medium">
-              <h2 class="subtitle is-4">{{ post.created_at }}</h2>
-              <div class="control"><span class="tag is-info is-uppercase ">story</span></div>
+            <div class="column is-8 is-offset-2">
+                <div class="content is-medium">
+                    <h2 class="subtitle is-4">{{ post.created_at }}</h2>
 
-              <h1 class="title">{{ post.title }}</h1>
-              <md>{{post.body}}</md>
+                    {% if post.image %}
+                        <figure class="hero container max-w-screen-lg mx-auto pb-10">
+                            <img class="mx-auto h-auto max-w-lg rounded-lg" src="{{ post.image.url }}" alt="img">
+                        </figure>
+                    {% endif %}
+            
+                    <div class="control"><span class="tag is-info is-uppercase ">story</span></div>
 
-              <div class="my-5">Category:
-                <a href="{% url 'blog:category_detail' post.category.slug %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                    <small>{{ post.category }}</small>
-                </a>
-              </div>
+                    <h1 class="title">{{ post.title }}</h1>
+                    <md>{{post.body}}</md>
 
+                    <div class="my-5">Category:
+                        <a href="{% url 'blog:category_detail' post.category.slug %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                            <small>{{ post.category }}</small>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {% include 'blog/comments.html' %}
+    {% include 'blog/comments.html' %}
 
 {% endblock %}

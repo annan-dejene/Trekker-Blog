@@ -30,6 +30,8 @@ class Post(models.Model):
 
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
 
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
 
     def __str__(self):
