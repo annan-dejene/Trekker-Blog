@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # local apps
     'core',
     'blog',
+    #sitemap
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

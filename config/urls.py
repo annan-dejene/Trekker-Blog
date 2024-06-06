@@ -17,10 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# for static images
 from django.conf import settings
 from django.conf.urls.static import static
 
+# for sitemap
+from django.contrib.sitemaps.views import sitemap
+
+from .sitemaps import CategorySitemap, PostSitemap
+
+sitemaps = {'category': CategorySitemap, 'post': PostSitemap}
+
 urlpatterns = [
+    path("sitemap.xml", sitemap, {'sitemaps': sitemaps}),
     path("", include('core.urls')),
     path("", include('blog.urls')),
     path("admin/", admin.site.urls),

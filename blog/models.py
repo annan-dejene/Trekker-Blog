@@ -11,6 +11,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return f"category/{self.slug}/"
 
 
 class Post(models.Model):
@@ -34,13 +37,15 @@ class Post(models.Model):
 
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.title
-    
-
     class Meta:
         ordering = ['-created_at',]
 
+
+    def __str__(self):
+        return self.title    
+
+    def get_absolute_url(self):
+        return f"blog/{self.slug}/"
 
 
 class Comment(models.Model):
